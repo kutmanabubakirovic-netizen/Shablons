@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StroyMarket Pro — Магазин стройматериалов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🏗️</span>
+                <span class="logo-text">STROY<b>MARKET</b></span>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Поиск среди 1000 товаров...">
+                <button type="button">Найти</button>
+            </div>
+
+            <div class="user-menu">
+                <button id="theme-toggle" title="Сменить тему">🌓</button>
+                <div class="cart-status">
+                    🛒 Корзина: <span id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        
+        <aside class="sidebar">
+            <h3>Категории</h3>
+            <nav class="category-list">
+                <button class="cat-btn active" data-cat="all">Все товары</button>
+                <button class="cat-btn" data-cat="Смеси">Сухие смеси</button>
+                <button class="cat-btn" data-cat="Инструменты">Инструменты</button>
+                <button class="cat-btn" data-cat="Электрика">Электрика</button>
+                <button class="cat-btn" data-cat="Сантехника">Сантехника</button>
+                <button class="cat-btn" data-cat="Крепеж">Крепеж</button>
+            </nav>
+
+            <div class="filter-box">
+                <h3>Фильтр по цене</h3>
+                <input type="range" id="price-filter" min="0" max="50000" step="100">
+                <div class="price-labels">
+                    <span>0 ₽</span>
+                    <span id="price-val">50000 ₽</span>
+                </div>
+            </div>
+        </aside>
+
+        <section class="products-section">
+            <div class="sorting">
+                <span>Найдено товаров: <b id="total-items">500</b></span>
+                <select id="sort-select">
+                    <option value="cheap">Сначала дешевые</option>
+                    <option value="expensive">Сначала дорогие</option>
+                </select>
+            </div>
+
+            <div class="product-grid" id="catalog">
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-info">
+                <p>© 2026 StroyMarket Pro. Все права защищены.</p>
+                <p>Кыргызстан, г. Джалал-Абад, ул. Строителей 42</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">О нас</a>
+                <a href="#">Доставка</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
