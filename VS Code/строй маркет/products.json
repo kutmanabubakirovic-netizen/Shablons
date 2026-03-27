@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "category": "Инструменты",
+    "name": "Молоток-гвоздодер Matrix 10450",
+    "price": 850,
+    "image_url": "https://cdn.vseinstrumenti.ru/images/goods/ruchnoj-instrument/molotki/850x1000/12345.jpg",
+    "description": "Молоток-гвоздодер Matrix 10450 с фибергласовой рукояткой, 450 г."
+  },
+  {
+    "id": 2,
+    "category": "Инструменты",
+    "name": "Набор отверток Gross 12165",
+    "price": 2300,
+    "image_url": "https://cdn.vseinstrumenti.ru/images/goods/ruchnoj-instrument/otvertki/850x1000/67890.jpg",
+    "description": "Набор отверток Gross 12165, CrV, 6 шт."
+  }
+  
+]

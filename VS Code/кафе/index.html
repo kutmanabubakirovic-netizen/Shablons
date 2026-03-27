@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Resto | Menu & Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page-bg"></div>
+
+    <header class="minimal-header">
+        <div class="container">
+            <h1 class="logo">Elite<span>Resto</span></h1>
+            <div class="search-box">
+                <input type="text" id="menuSearch" placeholder="Поиск блюда или напитка...">
+            </div>
+            <nav class="categories-nav">
+                <button class="cat-btn active" data-filter="all">Всё </button>
+                <button class="cat-btn" data-filter="soup">Первое</button>
+                <button class="cat-btn" data-filter="main">Второе</button>
+                <button class="cat-btn" data-filter="salad">Салаты</button>
+                <button class="cat-btn" data-filter="drink">Напитки</button>
+                <button class="cat-btn" data-filter="dessert">Десерты</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="menu-container">
+        <section class="menu-section" id="section-soup">
+            <h2 class="group-title">Первые блюда</h2>
+            <div class="grid" id="soup-grid"></div>
+        </section>
+
+        <section class="menu-section" id="section-main">
+            <h2 class="group-title">Вторые блюда</h2>
+            <div class="grid" id="main-grid"></div>
+        </section>
+
+        <section class="menu-section" id="section-salad">
+            <h2 class="group-title">Салаты</h2>
+            <div class="grid" id="salad-grid"></div>
+        </section>
+
+        <section class="menu-section" id="section-drink">
+            <h2 class="group-title">Барная карта</h2>
+            <div class="grid" id="drink-grid"></div>
+        </section>
+
+        <section class="menu-section" id="section-dessert">
+            <h2 class="group-title">Десерты</h2>
+            <div class="grid" id="dessert-grid"></div>
+        </section>
+    </main>
+
+    <div id="price-panel" class="price-panel">
+        <div class="panel-info">
+            <span class="panel-label">Итого:</span>
+            <span id="total-price-display">0</span> ₽
+        </div>
+        <button class="clear-cart" id="clearCart">Сброс</button>
+    </div>
+
+    <a href="https://wa.me/79991234567" class="whatsapp-float" id="orderBtn" target="_blank">
+        <span class="float-text">Заказать</span>
+        <div id="cart-count">0</div>
+        <span class="float-icon">💬</span>
+    </a>
+
+    <script>
+        // Генерация карточек (95 позиций)
+        const createItem = (id, type, name, basePrice) => `
+            <div class="item-card" data-type="${type}">
+                <div class="img-container"><div class="item-img" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&sig=${type}${id}');"></div></div>
+                <div class="item-info">
+                    <div class="item-header"><h3>${name} №${id}</h3><span class="price">${basePrice + (id * 10)} ₽</span></div>
+                    <p>Авторский рецепт, только свежие продукты.</p>
+                    <div class="item-actions">
+                        <span class="weight">${200 + (id % 5)*30}г</span>
+                        <button class="add-btn">+</button>
+                    </div>
+                </div>
+            </div>`;
+
+        const fill = (id, type, label, count, price) => {
+            const grid = document.getElementById(id);
+            for(let i=1; i<=count; i++) grid.innerHTML += createItem(i, type, label, price);
+        }
+
+        fill('soup-grid', 'soup', 'Суп', 350);
+        fill('main-grid', 'main', 'Горячее', 550);
+        fill('salad-grid', 'salad', 'Салат', 400);
+        fill('drink-grid', 'drink', 'Коктейль', 250);
+        fill('dessert-grid', 'dessert', 'Десерт', 300);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

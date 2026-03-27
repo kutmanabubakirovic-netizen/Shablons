@@ -1,0 +1,76 @@
+:root {
+    --gold: #d8a25e;
+    --dark: #1a1a1a;
+    --coffee: #3e2723;
+    --white: rgba(255, 255, 255, 0.98);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Montserrat', sans-serif; background: #000; color: var(--dark); overflow-x: hidden; }
+
+.page-bg {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1470');
+    background-size: cover; z-index: -1;
+}
+
+/* ШАПКА */
+.minimal-header {
+    background: var(--white); backdrop-filter: blur(15px);
+    padding: 30px 0 15px; position: sticky; top: 0; z-index: 1000;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); text-align: center;
+}
+.minimal-header.scrolled { padding: 10px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.logo { font-family: 'Playfair Display', serif; font-size: 2rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.5s; }
+.logo span { color: var(--gold); }
+.minimal-header.scrolled .logo { font-size: 1.3rem; }
+
+#menuSearch { width: 250px; border: none; border-bottom: 1px solid #ddd; padding: 8px; text-align: center; outline: none; transition: 0.3s; margin: 10px 0; background: transparent; }
+#menuSearch:focus { width: 350px; border-bottom: 1px solid var(--gold); }
+
+.categories-nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 5px 10px; }
+.cat-btn { background: none; border: none; font-weight: 700; font-size: 0.7rem; color: #888; cursor: pointer; padding: 5px 8px; text-transform: uppercase; transition: 0.3s; position: relative; }
+.cat-btn.active { color: var(--dark); }
+.cat-btn.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--gold); }
+
+/* КАРТОЧКИ */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 0 15px; }
+.item-card { background: var(--white); border-radius: 15px; overflow: hidden; opacity: 0; transform: translateY(30px); transition: 0.6s ease-out; }
+.item-card.show { opacity: 1; transform: translateY(0); }
+
+.img-container { height: 200px; overflow: hidden; }
+.item-img { width: 100%; height: 100%; background-size: cover; background-position: center; transition: 0.6s; }
+.item-card:hover .item-img { transform: scale(1.1); }
+
+.item-info { padding: 15px; }
+.item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.price { color: var(--gold); font-weight: 700; font-size: 1.1rem; }
+.group-title { color: white; font-family: 'Marck Script', cursive; font-size: 2.5rem; text-align: center; margin: 40px 0 20px; opacity: 0; transition: 0.8s; }
+.group-title.show { opacity: 1; }
+
+/* ДЕЙСТВИЯ (Отодвинутый плюс) */
+.item-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; border-top: 1px solid #eee; padding-top: 12px; }
+.weight { color: #aaa; font-size: 0.8rem; }
+.add-btn { background: var(--coffee); color: white; border: none; width: 40px; height: 40px; border-radius: 10px; cursor: pointer; transition: 0.3s; font-size: 1.4rem; font-weight: bold; }
+.add-btn:hover { background: var(--gold); transform: scale(1.1); }
+
+/* КАЛЬКУЛЯТОР-ПАНЕЛЬ */
+.price-panel {
+    position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(150%);
+    background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px); color: white;
+    padding: 12px 20px; border-radius: 15px; display: flex; align-items: center; gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1999; transition: transform 0.4s ease;
+    border: 1px solid rgba(216, 162, 94, 0.3);
+}
+.price-panel.active { transform: translateX(-50%) translateY(0); }
+.panel-info { font-weight: 700; font-size: 1.1rem; }
+.panel-label { color: #888; font-size: 0.8rem; text-transform: uppercase; margin-right: 5px; }
+#total-price-display { color: var(--gold); }
+.clear-cart { background: transparent; border: 1px solid #444; color: #888; padding: 4px 10px; border-radius: 8px; cursor: pointer; font-size: 0.65rem; text-transform: uppercase; }
+
+/* КНОПКА ЗАКАЗА */
+.whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 12px 22px; border-radius: 50px; text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s; }
+#cart-count { background: var(--gold); color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 0.75rem; display: none; align-items: center; justify-content: center; border: 2px solid #25d366; }
+@keyframes bump { 0% { transform: scale(1); } 50% { transform: scale(1.4); } 100% { transform: scale(1); } }
